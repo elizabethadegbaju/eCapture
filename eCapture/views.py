@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 
+from eCapture.models import Attendance
+
 
 def defaults(request):
-    return render(request, 'eCapture/defaults.html')
+    defaults = Attendance.objects.filter(user=request.user, present=False,
+                                         excused=False)
+    return render(request, 'eCapture/defaults.html', {'defaults':defaults})
 
 
 def profile_settings(request):
@@ -14,4 +18,5 @@ def index(request):
 
 
 def history(request):
-    return render(request, 'eCapture/status_log.html')
+    history = Attendance.objects.filter(user=request.user)
+    return render(request, 'eCapture/status_log.html', {'history': history})

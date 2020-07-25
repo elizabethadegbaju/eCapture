@@ -33,6 +33,7 @@ class Attendance(models.Model):
 
 class Event(models.Model):
     type = models.ForeignKey('EventType', on_delete=models.CASCADE)
+    location = models.CharField(max_length=100)
     date = models.DateField()
 
     def __str__(self):
