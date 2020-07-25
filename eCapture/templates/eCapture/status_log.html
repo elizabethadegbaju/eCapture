@@ -3,11 +3,11 @@
 {% block main %}
     <div class="col-lg-8 offset-lg-1" style="padding-top: 50px;">
         <div class="d-inline-flex align-items-lg-start">
-            <div><a href="#"><img class="rounded img-fluid" src="{% static 'assets/img/desk.jpg' %}"
+            <div><a href="#"><img class="rounded img-fluid" src="{{ user.staff.image.url }}"
                                   style="height: 150px;width: 150px;"></a></div>
             <div style="margin-left: 30px;">
-                <h3 class="name">Ewoma Ebarighe</h3>
-                <p class="description" style="margin-bottom: 0px;margin-top: 5px;">16CG021378</p>
+                <h3 class="name">{{ user.get_full_name }}</h3>
+                <p class="description" style="margin-bottom: 0px;margin-top: 5px;">{{ user.username }}</p>
                 <p class="description" style="margin-top: 5px;">Computer and Information Sciences</p>
             </div>
         </div>

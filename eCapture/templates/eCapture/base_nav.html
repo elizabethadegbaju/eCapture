@@ -13,15 +13,16 @@
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                                                      aria-expanded="false" href="#">&nbsp;<img class="rounded-circle"
                                                                                                style="height: 30px;width: 30px;"
-                                                                                               src="{% static 'assets/img/IMG_0248.jpg' %}"><span
-                            style="font-family: Montserrat, sans-serif;font-size: 14px;">&nbsp; Ewoma Ebarighe</span></a>
+                                                                                               src="{{ user.staff.image.url }}"><span
+                            style="font-family: Montserrat, sans-serif;font-size: 14px;">&nbsp; {{ user.get_full_name }}</span></a>
                         <div
                                 class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#"
                                                                      style="font-size: 14px;">Dashboard</a><a
                                 class="dropdown-item" role="presentation" href="#" style="font-size: 14px;">Profile
                             Settings</a>
                             <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" role="presentation" href="#" style="font-size: 14px;">Log Out</a>
+                            <a class="dropdown-item" role="presentation" href="{% url 'logout' %}"
+                               style="font-size: 14px;">Log Out</a>
                         </div>
                     </li>
                 </ul>

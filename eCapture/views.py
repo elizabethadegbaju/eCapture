@@ -1,10 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import Attendance, User
-
-
-def index(request):
-    return render(request, 'eCapture/index.html')
 
 
 class DefaultsView(generic.ListView):
@@ -20,3 +16,11 @@ class ProfileSettingsView(generic.ListView):
 class StatusandLogView(generic.ListView):
     model = Attendance
     template_name = 'eCapture/status_log.html'
+
+
+def index(request):
+    return redirect('login')
+
+
+def history(request):
+    return render(request, 'eCapture/status_log.html')
