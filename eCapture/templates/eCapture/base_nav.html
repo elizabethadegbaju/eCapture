@@ -1,0 +1,58 @@
+{% extends 'eCapture/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean"
+         style="padding-top: 5px;padding-bottom: 5px;">
+        <div class="container-fluid"><a class="navbar-brand" href="#"
+                                        style="font-family: Montserrat, sans-serif;color: #1b8002;">eCapture</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
+                                                     aria-expanded="false" href="#">&nbsp;<img class="rounded-circle"
+                                                                                               style="height: 30px;width: 30px;"
+                                                                                               src="{% static 'assets/img/IMG_0248.jpg' %}"><span
+                            style="font-family: Montserrat, sans-serif;font-size: 14px;">&nbsp; Ewoma Ebarighe</span></a>
+                        <div
+                                class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#"
+                                                                     style="font-size: 14px;">Dashboard</a><a
+                                class="dropdown-item" role="presentation" href="#" style="font-size: 14px;">Profile
+                            Settings</a>
+                            <div class="dropdown-divider" role="presentation"></div>
+                            <a class="dropdown-item" role="presentation" href="#" style="font-size: 14px;">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <div class="row" style="height: 600px;">
+            <div class="col-lg-2 d-none d-lg-block offset-lg-0">
+                <div style="height: 100%;width: 100%;padding-top: 100px;background-color: #37434d;">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active" href="#"
+                                                style="font-size: 14px;font-family: Montserrat, sans-serif;color: white;"><i
+                                class="icon ion-ios-time-outline"
+                                style="width: 40px;height: 40px;margin-right: 10px;"></i>Status
+                            &amp; Logs</a></li>
+                        <li
+                                class="nav-item"><a class="nav-link" href="#"
+                                                    style="font-size: 14px;font-family: Montserrat, sans-serif;color: white;"><span><i
+                                class="typcn typcn-warning" style="margin-right: 10px;"></i></span>Defaults</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"
+                                                style="font-size: 14px;font-family: Montserrat, sans-serif;color: white;"><span
+                                style="font-size: 16px;"><i class="typcn typcn-cog"
+                                                            style="margin-right: 10px;font-size: 18px;margin-left: -3px;"></i></span>Profile
+                            Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% block main %}
+
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

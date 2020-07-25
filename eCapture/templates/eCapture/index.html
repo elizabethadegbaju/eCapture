@@ -1,0 +1,39 @@
+{% extends 'eCapture/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="d-lg-flex register-photo" style="background-color: rgba(241,247,252,0);">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="post" action="{% url 'eCapture:status_logs' %}" style="padding-top: 20px;"><img
+                    class="img-fluid d-flex mx-auto" src="{% static 'assets/img/CU_LOGO.jpg' %}" width="100px"
+                    style="width: 60px;margin-bottom: 0px;">
+                <h1 class="text-left d-lg-flex justify-content-lg-center"
+                    style="color: #1b8002;font-size: 20px;font-family: Montserrat, sans-serif;"><strong>Log in</strong>
+                </h1>
+                <div class="form-group input-group"><span class="input-group-addon" style="font-size: 25px;"><i
+                        class="material-icons">person</i></span><input class="form-control" type="email" name="email"
+                                                                       placeholder="Employee ID"
+                                                                       style="color: #A1A1A1;font-family: Montserrat, sans-serif;font-size: 15px;height: 35px;"
+                                                                       inputmode="email" required=""></div>
+                <div class="form-group input-group"><span class="input-group-addon" style="font-size: 25px;"><i
+                        class="material-icons">lock</i></span><input class="form-control" type="password"
+                                                                     name="password"
+                                                                     placeholder="Password"
+                                                                     style="color: #A1A1A1;font-family: Montserrat, sans-serif;font-size: 15px;height: 35px;"
+                                                                     required=""></div>
+                <div class="d-lg-flex justify-content-lg-center">
+                    <button class="btn btn-outline-primary" type="submit"
+                            style="border-radius: 30px;font-family: Montserrat, sans-serif;height: 40px;margin-top: 0px;font-size: 12px;">
+                        LOG IN<i class="icon ion-android-arrow-forward"
+                                 style="padding-left: 0px;margin-left: 10px;"></i>
+                    </button>
+                </div>
+                <div
+                        class="d-lg-flex justify-content-lg-center align-items-lg-center">
+                    <a href="#"
+                       style="color: #9c27b0;font-family: Montserrat, sans-serif;font-size: 11px;margin-top: 10px;">Forgot
+                        Password?</a></div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
