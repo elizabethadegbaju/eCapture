@@ -16,9 +16,13 @@
                                                                                                src="{{ user.staff.image.url }}"><span
                             style="font-family: Montserrat, sans-serif;font-size: 14px;">&nbsp; {{ user.get_full_name }}</span></a>
                         <div
-                                class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#"
+                                class="dropdown-menu" role="menu"><a
+                                class="dropdown-item" role="presentation"
+                                href="{% url 'eCapture:history' %}"
                                                                      style="font-size: 14px;">Dashboard</a><a
-                                class="dropdown-item" role="presentation" href="#" style="font-size: 14px;">Profile
+                                class="dropdown-item" role="presentation"
+                                href="{% url 'eCapture:profile_settings' %}" style="font-size: 14px;
+">Profile
                             Settings</a>
                             <div class="dropdown-divider" role="presentation"></div>
                             <a class="dropdown-item" role="presentation" href="{% url 'logout' %}"
@@ -34,16 +38,18 @@
             <div class="col-lg-2 d-none d-lg-block offset-lg-0">
                 <div style="height: 100%;width: 100%;padding-top: 100px;background-color: #37434d;">
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link active" href="#"
+                        <li class="nav-item"><a class="nav-link active"
+                                                href="{% url 'eCapture:history' %}"
                                                 style="font-size: 14px;font-family: Montserrat, sans-serif;color: white;"><i
                                 class="icon ion-ios-time-outline"
                                 style="width: 40px;height: 40px;margin-right: 10px;"></i>Status
                             &amp; Logs</a></li>
                         <li
-                                class="nav-item"><a class="nav-link" href="#"
+                                class="nav-item"><a class="nav-link"
+                                                    href="{% url 'eCapture:defaults' %}"
                                                     style="font-size: 14px;font-family: Montserrat, sans-serif;color: white;"><span><i
                                 class="typcn typcn-warning" style="margin-right: 10px;"></i></span>Defaults</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"
+                        <li class="nav-item"><a class="nav-link" href="{% url 'eCapture:profile_settings' %}"
                                                 style="font-size: 14px;font-family: Montserrat, sans-serif;color: white;"><span
                                 style="font-size: 16px;"><i class="typcn typcn-cog"
                                                             style="margin-right: 10px;font-size: 18px;margin-left: -3px;"></i></span>Profile
