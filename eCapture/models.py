@@ -30,6 +30,8 @@ class Attendance(models.Model):
     present = models.BooleanField(default=False)
     excused = models.BooleanField(default=False)
 
+    def __str__(self):
+        return str(self.event)
 
 class Event(models.Model):
     type = models.ForeignKey('EventType', on_delete=models.CASCADE)
