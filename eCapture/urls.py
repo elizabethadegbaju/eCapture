@@ -10,5 +10,8 @@ urlpatterns = [
     path('defaults/', views.defaults, name='defaults'),
     path('profile_settings/', views.profile_settings, name='profile_settings'),
     path('status_logs/', views.history, name='history'),
+    path('registration/', views.registration, name='registration'),
+    path('dashboard/', views.admin, name='admin'),
+
 
 ]

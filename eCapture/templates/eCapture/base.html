@@ -17,9 +17,12 @@
     <link rel="stylesheet" href="{% static 'assets/css/Projects-Horizontal.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    {% block styles %}
+
+    {% endblock %}
 </head>
 
-<body>
+<body style="background-color: #d7e0dd">
 {% block content %}
 
 {% endblock %}

@@ -1,7 +1,7 @@
 .btn-outline-primary:hover {
-  color: #9c27b0;
+  color: #1b8002;
   background-color: white;
-  border-color: #9c27b0;
+  border-color: #1b8002;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show > .btn-outline-primary.dropdown-toggle {
@@ -12,7 +12,15 @@
 
 .btn-outline-primary {
   color: white;
-  background-color: #9c27b0;
-  border-color: #9c27b0;
+  background-color: #1b8002;
+  border-color: #1b8002;
+}
+
+.text-input {
+  background: white;
+  border: none;
+  border-bottom: 1px solid #888888;
+  border-radius: 0;
+  outline: none;
 }
 
