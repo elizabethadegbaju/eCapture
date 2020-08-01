@@ -10,7 +10,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('defaults/', views.defaults, name='defaults'),
     path('profile_settings/', views.profile_settings, name='profile_settings'),
-    path('status_logs/', views.history, name='history'),
-    path('registration/', views.registration, name='registration'),
+    path('profile/', views.history, name='profile'),
+    path('users/add/', views.registration, name='registration'),
+    path('users/<str:username>/', views.view_user, name='view_user'),
     path('dashboard/', views.admin, name='admin'),
 ]

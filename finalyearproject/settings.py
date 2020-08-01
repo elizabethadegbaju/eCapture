@@ -26,7 +26,7 @@ DEBUG = True
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = '/status_logs/'
+LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = 'login'
 
 ALLOWED_HOSTS = []
