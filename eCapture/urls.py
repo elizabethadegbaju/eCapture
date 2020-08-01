@@ -1,5 +1,6 @@
-from django.urls import path
 from django.contrib import admin
+from django.urls import path
+
 from . import views
 
 app_name = 'eCapture'
@@ -12,6 +13,4 @@ urlpatterns = [
     path('status_logs/', views.history, name='history'),
     path('registration/', views.registration, name='registration'),
     path('dashboard/', views.admin, name='admin'),
-
-
 ]

@@ -6,33 +6,47 @@
          style="padding-right: 50px;padding-left: 50px;">
         <div class="card" style="width: 100%;margin-top: -30px;">
             <div class="card-body" style="height: 460px;padding-top: 20px;">
-                <form>
+                <form action="{% url 'eCapture:profile_settings' %}"
+                      method="post">
+                    {% csrf_token %}
                     <h1 style="font-size: 20px;font-family: Montserrat, sans-serif;margin-bottom: 0px;padding-left: 10px;padding-top: 10px;color: #1b8002;">
                         Profile Settings</h1>
                     <hr>
-                    <div class="form-group" style="margin-bottom: 10px;"><label
-                            style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Name</label><input
-                            class="form-control" type="email" autocomplete="off" required="" name="email"
-                            style="height: 35px;"></div>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Name</label>
+                        <input class="form-control"
+                               required="" type="text" name="name"
+                               value="{{ user.get_full_name }}"
+                               style="height: 35px;">
+                    </div>
                     <div class="form-group"
                          style="margin-bottom: 10px;"><label
                             style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Employee
-                        ID</label><input class="form-control" type="email" autocomplete="off" required=""
-                                         name="email" disabled="" style="height: 35px;"></div>
-                    <div
-                            class="form-group" style="margin-bottom: 10px;"><label
-                            style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Department</label><input
-                            class="form-control" type="email" autocomplete="off" required="" name="email"
-                            disabled="" style="height: 35px;"></div>
-                    <div
-                            class="form-group" style="margin-bottom: 10px;"><label
-                            style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Password</label><input
-                            class="form-control" type="email" autocomplete="off" required="" name="email"
-                            style="height: 35px;">
+                        ID</label><input class="form-control" type="text"
+                                         autocomplete="off" required=""
+                                         name="username" disabled=""
+                                         value="{{ user.username }}"
+                                         style="height: 35px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label
+                                style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Department</label><input
+                            class="form-control" type="text"
+                            autocomplete="off" required="" name="department"
+                            value="{{ user.employee.department }}"
+                            disabled="" style="height: 35px;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Password</label>
+                        <input class="form-control" type="password"
+                               autocomplete="off" required="" name="password"
+                               style="height: 35px;">
                         <div class="d-flex justify-content-center"
                              style="margin-top: 20px;">
-                            <button class="btn btn-outline-primary btn-block" type="submit"
-                                    style="font-size: 17px;font-family: Montserrat, sans-serif;height: 40px;">Save
+                            <button class="btn btn-outline-primary btn-block"
+                                    type="submit"
+                                    style="font-size: 17px;font-family: Montserrat, sans-serif;height: 40px;">
+                                Save
                             </button>
                         </div>
                     </div>
