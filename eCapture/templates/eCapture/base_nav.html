@@ -5,15 +5,19 @@
          style="padding-top: 5px;padding-bottom: 5px;">
         <div class="container-fluid"><a class="navbar-brand" href="#"
                                         style="font-family: Montserrat, sans-serif;color: #1b8002;">eCapture</a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+            <button data-toggle="collapse" class="navbar-toggler"
+                    data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                     class="navbar-toggler-icon"></span></button>
             <div
                     class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                                                     aria-expanded="false" href="#">&nbsp;<img class="rounded-circle"
-                                                                                               style="height: 30px;width: 30px;"
-                                                                                               src="{{ user.staff.image.url }}"><span
+                    <li class="nav-item dropdown"><a
+                            class="dropdown-toggle nav-link"
+                            data-toggle="dropdown"
+                            aria-expanded="false" href="#">&nbsp;<img
+                            class="rounded-circle"
+                            style="height: 30px;width: 30px;"
+                            src="{{ user.staff.image.url }}"><span
                             style="font-family: Montserrat, sans-serif;font-size: 14px;">&nbsp; {{ user.get_full_name }}</span></a>
                         <div
                                 class="dropdown-menu" role="menu"><a
@@ -21,11 +25,14 @@
                                 href="{% url 'eCapture:history' %}"
                                 style="font-size: 14px;">Dashboard</a><a
                                 class="dropdown-item" role="presentation"
-                                href="{% url 'eCapture:profile_settings' %}" style="font-size: 14px;
+                                href="{% url 'eCapture:profile_settings' %}"
+                                style="font-size: 14px;
 ">Profile
                             Settings</a>
-                            <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" role="presentation" href="{% url 'logout' %}"
+                            <div class="dropdown-divider"
+                                 role="presentation"></div>
+                            <a class="dropdown-item" role="presentation"
+                               href="{% url 'logout' %}"
                                style="font-size: 14px;">Log Out</a>
                         </div>
                     </li>
@@ -38,22 +45,47 @@
             <div class="col-lg-2 d-none d-lg-block offset-lg-0">
                 <div style="height: 100%;width: 100%;padding-top: 100px; background-color: white;color: black">
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link active"
-                                                href="{% url 'eCapture:history' %}"
-                                                style="font-size: 14px;font-family: Montserrat, sans-serif;color: black;"><i
-                                class="icon ion-ios-time-outline"
-                                style="width: 40px;height: 40px;margin-right: 10px;"></i>Status
-                            &amp; Logs</a></li>
-                        <li
-                                class="nav-item"><a class="nav-link"
-                                                    href="{% url 'eCapture:defaults' %}"
-                                                    style="font-size: 14px;font-family: Montserrat, sans-serif;color: black;"><span><i
-                                class="typcn typcn-warning" style="margin-right: 10px;"></i></span>Defaults</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'eCapture:profile_settings' %}"
-                                                style="font-size: 14px;font-family: Montserrat, sans-serif;color: black;"><span
-                                style="font-size: 16px;"><i class="typcn typcn-cog"
-                                                            style="margin-right: 10px;font-size: 18px;margin-left: -3px;"></i></span>Profile
-                            Settings</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               href="{% url 'eCapture:history' %}"
+                               style="font-size: 14px;font-family: Montserrat, sans-serif;color: black;">
+                                <i class="icon ion-ios-time-outline"
+                                   style="width: 40px;height: 40px;margin-right: 10px;"></i>Status
+                                &amp; Logs
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{% url 'eCapture:defaults' %}"
+                               style="font-size: 14px;font-family: Montserrat,
+                            sans-serif;color: black;">
+                                <span><i class="typcn typcn-warning"
+                                         style="margin-right: 10px;"></i>
+                                </span>Defaults
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{% url 'eCapture:profile_settings' %}"
+                               style="font-size: 14px;font-family: Montserrat, sans-serif;color: black;">
+                                <span style="font-size: 16px;"><i
+                                        class="typcn typcn-cog"
+                                        style="margin-right: 10px;font-size: 18px;margin-left: -3px;"></i>
+                                </span>Profile Settings
+                            </a>
+                        </li>
+                        {% if user.is_superuser %}
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="{% url 'eCapture:admin' %}"
+                                   style="font-size: 14px;font-family: Montserrat, sans-serif;color: black;">
+                                <span style="font-size: 16px;"><i
+                                        class="typcn typcn-chart-bar"
+                                        style="margin-right: 10px;font-size: 18px;margin-left: -3px;"></i>
+                                </span>Dashboard
+                                </a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
