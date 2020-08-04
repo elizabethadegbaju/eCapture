@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="container" style="margin-top: 0px;">
                     <div class="table-responsive table table-hover">
-                        <table class="table">
+                        <table class="table small">
                             <thead>
                             <tr>
                                 <th style="color: #C4C4C4;width: 224px;">DATE
@@ -35,7 +35,8 @@
                                     <td style="width: 224px;">
                                         {{ default.event.location }}</td>
                                     <td style="width: 224px;">
-                                        Absent</td>
+                                        Absent
+                                    </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -45,16 +46,9 @@
             </div>
         </div>
     </div>
-                <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                    </div>
                 </div>
-            </footer>
+            </div>
+        </div>
+
+
 {% endblock %}

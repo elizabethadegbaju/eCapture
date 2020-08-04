@@ -1,5 +1,8 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 def user_image_path(instance, filename):
@@ -11,6 +14,7 @@ class Staff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     department = models.ForeignKey('Department', on_delete=models.DO_NOTHING)
     role = models.ForeignKey('Role', on_delete=models.DO_NOTHING, default=1)
+    dob = models.DateField()
     image = models.ImageField(upload_to=user_image_path)
 
     def __str__(self):
