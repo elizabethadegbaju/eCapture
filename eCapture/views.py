@@ -23,7 +23,7 @@ def profile_settings(request):
         user.last_name = name[1]
         user.save()
         update_session_auth_hash(request, user)
-        return redirect('eCapture:history')
+        return redirect('eCapture:profile')
 
 
 def registration(request):
