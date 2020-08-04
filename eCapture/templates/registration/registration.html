@@ -1,43 +1,115 @@
-{% extends 'eCapture/base.html' %}
+{% extends 'eCapture/base_admin.html' %}
 {% load staticfiles %}
-{% block content %}
-    <div class="d-flex justify-content-center align-content-center" style="font-size: 14px;">
+{% block admin_main %}
+    <div class="d-flex justify-content-center align-content-center"
+         style="font-size: 14px;">
         <div class="card"
              style="margin-left: 50px;margin-top: 80px;margin-right: 50px;width: 800px;padding-bottom: 20px;padding-top: 5px;">
-            <form>
+            <form method="post" action="{% url 'eCapture:registration' %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
                 <h1 style="font-family: Montserrat, sans-serif;font-size: 20px;margin-left: 31px;width: 400px;margin-top: 20px;">
-                    Register</h1>
-                <h6 style="font-family: Montserrat, sans-serif;font-size: 12px;margin-left: 31px;width: 400px;color: #888888;margin-bottom: 0px;">
-                    <strong>Admin, Welcome to eCapture</strong></h6>
-                <div class="form-row" style="margin-top: 18px;padding-left: 30px;">
+                    Register New User</h1>
+                {#                <h6 style="font-family: Montserrat, sans-serif;font-size: 12px;margin-left: 31px;width: 400px;color: #888888;margin-bottom: 0;">#}
+                {#                    <strong>Admin, Welcome to eCapture</strong></h6>#}
+                <div class="form-row"
+                     style="margin-top: 18px;padding-left: 30px;">
                     <div class="col-lg-4" style="padding-right: 50px;">
-                        <div class="form-group"><label>Firstname</label><input
-                                class="form-control form-control-sm text-input respond" type="text"
-                                tex="width: 250px;height: 25px;"></div>
-                        <div class="form-group"><label>Employee ID</label><input
-                                class="form-control form-control-sm text-input respond" type="text"></div>
-                        <div class="form-group"><label>Password</label><input
-                                class="form-control form-control-sm text-input respond" type="text"></div>
-                    </div>
-                    <div class="col-lg-4" style="padding-right: 50px;">
-                        <div class="form-group"><label>Lastname</label><input
-                                class="form-control form-control-sm text-input respond" type="text"></div>
-                        <div class="form-group"><label>Department</label><input
-                                class="form-control form-control-sm text-input respond" type="text"></div>
-                        <div class="form-group"><label>Date of Birth</label><input
-                                class="form-control form-control-sm text-input respond" type="date"></div>
-                    </div>
-                    <div class="col-lg-4" style="padding-right: 50px;">
-                        <div class="form-group"><label>Email Address</label><input
-                                class="form-control form-control-sm text-input respond" type="email"></div>
-                        <div class="form-group"><label>Picture Upload<br></label><input type="file" accept="image/*">
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input class="form-control form-control-sm text-input respond"
+                                   id="first_name"
+                                   name="first_name"
+                                   type="text">
                         </div>
                         <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input class="form-control form-control-sm
+                            text-input respond"
+                                   id="email"
+                                   name="email"
+                                   type="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Employee ID</label>
+                            <input class="form-control form-control-sm text-input respond"
+                                   id="username"
+                                   name="username"
+                                   type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control form-control-sm text-input respond"
+                                   id="password"
+                                   name="password"
+                                   type="password">
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="padding-right: 50px;">
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input class="form-control form-control-sm text-input respond"
+                                   id="last_name"
+                                   name="last_name"
+                                   type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select class="form-control form-control-sm
+                            text-input respond"
+                                    id="role"
+                                    name="role">
+                                {% for role in roles %}
+                                    <option value="{{ role.id }}">
+                                        {{ role.name }}
+                                    </option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select class="form-control form-control-sm
+                            text-input respond"
+                                    id="department"
+                                    name="department">
+                                {% for department in departments %}
+                                    <option value="{{ department.id }}">
+                                        {{ department.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input class="form-control form-control-sm text-input respond"
+                                   id="dob"
+                                   name="dob"
+                                   type="date">
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="padding-right: 50px;">
+                        <div class="form-group">
+                            <label for="image">Picture Upload<br></label>
+                            <input type="file"
+                                   id="image"
+                                   name="image"
+                                   accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                             <div class="d-flex float-right">
-                                <button class="btn btn-outline-primary" type="button"
+                                <button class="btn btn-outline-primary"
+                                        type="submit"
                                         style="border-radius: 30px;font-family: Montserrat, sans-serif;height: 40px;font-size: 13px;">
-                                    Register<i class="icon ion-android-arrow-forward"
-                                               style="padding-left: 0px;margin-left: 10px;"></i></button>
+                                    Register<i class="icon
+                                    ion-android-arrow-forward"
+                                               style="padding-left: 0;margin-left: 10px;"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
