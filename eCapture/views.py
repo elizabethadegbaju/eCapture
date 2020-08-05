@@ -64,12 +64,17 @@ def registration(request):
 def admin(request):
     total_users = User.objects.all()
     total_events = Event.objects.count()
+    today = timezone.now().date()
     last_event = Event.objects.filter(
-        date__lte=timezone.now().date()).order_by('-date').first()
+        date__lte=today).order_by('-date').first()
     last_event_attendance = Attendance.objects.filter(event=last_event).count()
+    past_events = Event.objects.filter(date__lte=today).count()
+    upcoming_events = Event.objects.filter(date__gt=today).count()
     return render(request, 'eCapture/dashboard.html',
                   {'total_users': total_users, 'total_events': total_events,
-                   'last_event_attendance': last_event_attendance})
+                   'last_event_attendance': last_event_attendance,
+                   'past_events': past_events,
+                   'upcoming_events': upcoming_events})
 
 
 def index(request):
@@ -85,7 +90,10 @@ def history(request):
 
 @login_required
 def view_user(request, username):
-    return None
+    history = Attendance.objects.filter(user__username=username)
+    user = User.objects.get(username=username)
+    return render(request, 'eCapture/status_log.html',
+                  {'history': history, 'user': user})
 
 
 @login_required
@@ -102,3 +110,20 @@ def add_event(request):
                                      type_id=type_id)
         event.save()
         return redirect('eCapture:admin')
+
+
+@login_required
+def add_event_type(request):
+    if request.method == 'GET':
+        return render(request, 'eCapture/add-event-type.html')
+    else:
+        name = request.POST['name']
+        event_type = EventType.objects.create(name=name)
+        event_type.save()
+        return redirect('eCapture:admin')
+
+
+@login_required
+def find_user(request):
+    username = request.POST["username"]
+    return redirect('eCapture:view_user', username)

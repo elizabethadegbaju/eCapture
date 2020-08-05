@@ -14,9 +14,9 @@
         }
 
         img {
-            border-style: solid!important;
-            border-color: black!important;
-            border-width: thin!important;
+            border-style: solid !important;
+            border-color: black !important;
+            border-width: thin !important;
         }
     </style>
 {% endblock %}
@@ -37,8 +37,10 @@
                             aria-expanded="false" href="#">&nbsp;<img
                             class="rounded-circle"
                             style="height: 30px;width: 30px;"
-                            src="{{ user.staff.image.url }}"><span
-                            style="font-family: Montserrat, sans-serif;font-size: 14px;">&nbsp; {{ user.get_full_name }}</span></a>
+                            src="{{ request.user.staff.image.url }}"><span
+                            style="font-family: Montserrat, sans-serif;
+                            font-size: 14px;">&nbsp;
+                        {{ request.user.get_full_name }}</span></a>
                         <div
                                 class="dropdown-menu" role="menu"><a
                                 class="dropdown-item" role="presentation"
@@ -95,7 +97,7 @@
                                 </span>Profile Settings
                             </a>
                         </li>
-                        {% if user.is_superuser %}
+                        {% if request.user.is_superuser %}
                             <li class="nav-item">
                                 <a class="nav-link"
                                    href="{% url 'eCapture:admin' %}"
