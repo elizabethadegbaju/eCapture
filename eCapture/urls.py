@@ -14,4 +14,5 @@ urlpatterns = [
     path('users/add/', views.registration, name='registration'),
     path('users/<str:username>/', views.view_user, name='view_user'),
     path('dashboard/', views.admin, name='admin'),
+    path('events/add/',views.add_event,name='add_event')
 ]

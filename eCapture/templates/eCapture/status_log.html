@@ -1,33 +1,35 @@
 {% extends 'eCapture/base_nav.html' %}
 {% load staticfiles %}
 {% block main %}
-    <div class="col-lg-8 offset-lg-1" style="padding-top: 50px;">
-        <div class="d-inline-flex align-items-lg-start">
-            <div><a href="#"><img class="rounded img-fluid"
-                                  src="{{ user.staff.image.url }}"
-                                  style="height: 150px;width: 150px;"></a>
-            </div>
-            <div style="margin-left: 30px;">
-                <h3 class="name">{{ user.get_full_name }}</h3>
-                <p class="description"
-                   style="margin-bottom: 0px;margin-top: 5px;">{{ user.username }}</p>
-                <p class="description" style="margin-top: 5px;">Computer and
-                    Information Sciences</p>
-            </div>
-        </div>
+    <div class="col-lg-8 offset-lg-1" style="padding-top: 15vh;">
+
         <div class="card" style="margin-bottom: 80px;margin-top: 30px;">
+            <div class="card-header">
+                <div class="d-inline-flex align-items-lg-start">
+                    <div><a href="#"><img class="rounded-circle img-fluid"
+                                          src="{{ user.staff.image.url }}"
+                                          style="height: 150px;width: 150px;"></a>
+                    </div>
+                    <div style="margin-left: 30px;">
+                        <h3 class="name">{{ user.get_full_name }}</h3>
+                        <p class="description"
+                           style="margin-bottom: 0px;margin-top: 5px;">{{ user.username }}</p>
+                        <p class="description" style="margin-top: 5px;">
+                            Computer and
+                            Information Sciences</p>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="container" style="margin-top: 0px;">
                     <div style="padding-top: 0px;padding-bottom: 20px;">
                         <p class="d-inline-block"
                            style="color: #1b8002;font-family: Montserrat, sans-serif;margin-bottom: 0px;">
                             <strong>ATTENDANCE
-                                LOG</strong></p><input class="float-right"
-                                                       type="date"
-                                                       style="color: #767475;font-size: 14px;font-family: Raleway, sans-serif;width: 150px;height: 30px;">
+                                LOG</strong></p>
                     </div>
                     <div class="table-responsive table table-hover">
-                        <table class="table">
+                        <table class="table small">
                             <thead>
                             <tr>
                                 <th style="color: #C4C4C4;width: 224px;">DATE
@@ -51,13 +53,17 @@
                                     <td style="width: 224px;">
                                         {{ attendance.event.location }}</td>
                                     {% if attendance.present %}
-                                        <td style="width: 224px;" class="text-success">Present</td>
+                                        <td style="width: 224px;"
+                                            class="text-success">Present
+                                        </td>
                                     {% elif not attendance.present and attendance.excused %}
                                         <td style="width: 224px;"
-                                            class="text-warning">Excused</td>
+                                            class="text-warning">Excused
+                                        </td>
                                     {% else %}
                                         <td style="width: 224px;"
-                                            class="text-danger">Absent</td>
+                                            class="text-danger">Absent
+                                        </td>
                                     {% endif %}
                                 </tr>
                             {% endfor %}
