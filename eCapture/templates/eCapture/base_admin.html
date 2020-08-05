@@ -75,13 +75,17 @@
                                 <a class="nav-link"
                                    href="{% url 'eCapture:add_event' %}">New
                                     Event</a>
+                                <a class="nav-link"
+                                   href="{% url 'eCapture:add_event_type' %}">New
+                                    Event Type</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#"
                            data-toggle="collapse" data-target="#collapsePages"
                            aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i
-                                    class="fas fa-users"></i></div>
+                                    class="fas fa-users"></i>
+                            </div>
                             Manage Staff
                             <div class="sb-sidenav-collapse-arrow"><i
                                     class="fas fa-angle-down"></i></div>
@@ -95,7 +99,8 @@
                                    href="{% url 'eCapture:registration' %}">
                                     Register New User
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" data-toggle="modal"
+                                   href="#" data-target="#findUser">
                                     View a User
                                 </a>
                             </nav>
@@ -125,6 +130,48 @@
                 </div>
             </footer>
         </div>
+        <div id="findUser" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true" class="modal fade text-left">
+            <div role="document" class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="exampleModalLabel"
+                            class="modal-title">Find User</h5>
+                        <button type="button"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                class="close"><span
+                                aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <form action="{% url 'eCapture:find_user' %}"
+                          method="post">
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Username:</label>
+                                <input type="text"
+                                       placeholder="Username (case-sensitive)"
+                                       class="form-control"
+                                       required name="username">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                    data-dismiss="modal"
+                                    class="btn btn-secondary">
+                                Close
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Go to User's Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
             crossorigin="anonymous"></script>
@@ -136,5 +183,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
             crossorigin="anonymous"></script>
     <script src="{% static 'assets/demo/datatables-demo.js' %}"></script>
+    <script src="{% static 'assets/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-charts.js' %}"></script>
     </body>
 {% endblock %}

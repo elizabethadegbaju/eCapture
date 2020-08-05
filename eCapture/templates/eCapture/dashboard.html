@@ -93,6 +93,21 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xl-4 col-md-6">
+                <!-- Monthly Usage-->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Events</h4>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                        <div class="chart-area mb-4" style="width: 100%;">
+                            <canvas height="250px"
+                                    data-bs-chart='{"type":"pie",
+                            "data":{"labels":["Past Events","Upcoming Events"],"datasets":[{"label":"","backgroundColor":["#f4476b","#894f62"],"borderColor":["#ffffff","#ffffff"],"data":["{{ past_events }}","{{ upcoming_events }}"]}]},"options":{"maintainAspectRatio":false,"legend":{"display":true},"title":{}}}'></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
