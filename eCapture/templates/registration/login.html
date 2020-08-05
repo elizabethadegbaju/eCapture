@@ -1,27 +1,60 @@
-{% extends 'eCapture/dashboard.html' %}
+{% extends 'eCapture/base.html' %}
 {% load staticfiles %}
+{% block styles %}
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0,
+            0.5)), url({% static 'assets/img/senate.jpg' %});
+            background-size: cover;
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            height: 100vh !important;
+            padding-top: 12%;
+            padding-bottom: 12%;
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
-    <div class="d-lg-flex register-photo" style="background-color: rgba(241,247,252,0);">
+    <div class="register-photo"
+         style="background-color: rgba(241,247,252,0)">
         <div class="form-container">
             <div class="image-holder"></div>
-            <form method="post" action="{% url 'login' %}" style="padding-top: 20px;">
+            <form method="post" action="{% url 'login' %}"
+                  style="padding-top: 20px;">
                 {% csrf_token %}
-                <img class="img-fluid d-flex mx-auto" src="{% static 'assets/img/CU_LOGO.jpg' %}" width="100px"
+                <img class="img-fluid d-flex mx-auto"
+                     src="{% static 'assets/img/CU_LOGO.jpg' %}"
+                     width="100px"
                      style="width: 60px;margin-bottom: 0px;">
                 <h1 class="text-left d-lg-flex justify-content-lg-center"
-                    style="color: #1b8002;font-size: 20px;font-family: Montserrat, sans-serif;"><strong>Log in</strong>
+                    style="color: #1b8002;font-size: 20px;font-family: Montserrat, sans-serif;">
+                    <strong>Log in</strong>
                 </h1>
-                <div class="form-group input-group"><span class="input-group-addon" style="font-size: 25px;"><i
-                        class="material-icons">person</i></span><input class="form-control" name="username"
-                                                                       placeholder="Employee ID"
-                                                                       style="color: #A1A1A1;font-family: Montserrat, sans-serif;font-size: 12px;height: 35px;"
-                                                                       required=""></div>
-                <div class="form-group input-group"><span class="input-group-addon" style="font-size: 25px;"><i
-                        class="material-icons">lock</i></span><input class="form-control" type="password"
-                                                                     name="password"
-                                                                     placeholder="Password"
-                                                                     style="color: #A1A1A1;font-family: Montserrat, sans-serif;font-size: 12px;height: 35px;"
-                                                                     required=""></div>
+                <div class="form-group input-group"><span
+                        class="input-group-addon" style="font-size: 25px;"><i
+                        class="material-icons">person</i></span><input
+                        class="form-control" name="username"
+                        placeholder="Employee ID"
+                        style="color: #A1A1A1;font-family: Montserrat, sans-serif;font-size: 12px;height: 35px;"
+                        required=""></div>
+                <div class="form-group input-group"><span
+                        class="input-group-addon" style="font-size: 25px;"><i
+                        class="material-icons">lock</i></span><input
+                        class="form-control" type="password"
+                        name="password"
+                        placeholder="Password"
+                        style="color: #A1A1A1;font-family: Montserrat, sans-serif;font-size: 12px;height: 35px;"
+                        required=""></div>
                 <div class="d-lg-flex justify-content-lg-center">
                     <button class="btn btn-outline-primary" type="submit"
                             style="border-radius: 30px;font-family: Montserrat, sans-serif;height: 40px;margin-top: 0px;font-size: 12px;">

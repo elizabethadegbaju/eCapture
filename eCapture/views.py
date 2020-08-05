@@ -1,8 +1,10 @@
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.utils import timezone
 
-from eCapture.models import Attendance, Department, Staff, Role
+from eCapture.models import Attendance, Department, Staff, Role, Event, \
+    EventType
 
 
 def defaults(request):
@@ -23,7 +25,7 @@ def profile_settings(request):
         user.last_name = name[1]
         user.save()
         update_session_auth_hash(request, user)
-        return redirect('eCapture:history')
+        return redirect('eCapture:profile')
 
 
 def registration(request):
@@ -55,7 +57,14 @@ def registration(request):
 
 
 def admin(request):
-    return render(request, 'eCapture/admin.html')
+    total_users = User.objects.all()
+    total_events = Event.objects.count()
+    last_event = Event.objects.filter(
+        date__lte=timezone.now().date()).order_by('-date').first()
+    last_event_attendance = Attendance.objects.filter(event=last_event).count()
+    return render(request, 'eCapture/dashboard.html',
+                  {'total_users': total_users, 'total_events': total_events,
+                   'last_event_attendance': last_event_attendance})
 
 
 def index(request):
@@ -70,3 +79,18 @@ def history(request):
 
 def view_user(request, username):
     return None
+
+
+def add_event(request):
+    if request.method == 'GET':
+        event_types = EventType.objects.all()
+        return render(request, 'eCapture/add-event.html',
+                      {'event_types': event_types})
+    else:
+        type_id = request.POST['type']
+        location = request.POST['location']
+        date = request.POST['date']
+        event = Event.objects.create(location=location, date=date,
+                                     type_id=type_id)
+        event.save()
+        return redirect('eCapture:admin')

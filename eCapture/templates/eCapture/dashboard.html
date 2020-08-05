@@ -1,34 +1,99 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>eCapture back</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
-    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/material-icons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/typicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Navigation-Clean.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Projects-Horizontal.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-    {% block styles %}
-
-    {% endblock %}
-</head>
-
-<body style="background-color: #d7e0dd">
-{% block content %}
+{% extends 'eCapture/base_admin.html' %}
+{% block admin_main %}
+    <div class="container-fluid">
+        <h2 class="mt-4">Dashboard</h2>
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>{{ total_users.count }}</h3>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-dark stretched-link"
+                           href="#">Total Number of Users</a>
+                        <div class="small">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>{{ total_events }}</h3>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-dark stretched-link"
+                           href="#">Total Number of Events</a>
+                        <div class="small">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>{{ last_event_attendance }}</h3>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-dark stretched-link"
+                           href="#">Number of Users that attended last
+                            event</a>
+                        <div class="small">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#            <div class="col-xl-3 col-md-6">#}
+            {#                <div class="card mb-4">#}
+            {#                    <div class="card-body">#}
+            {#                        <h3>8</h3>#}
+            {#                    </div>#}
+            {#                    <div class="card-footer d-flex align-items-center justify-content-between">#}
+            {#                        <a class="small text-dark stretched-link"#}
+            {#                           href="#">View Details</a>#}
+            {#                        <div class="small">#}
+            {#                            <i class="fas fa-angle-right"></i>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="col-xl-8 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>List of Users</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered"
+                                   id="dataTable" width="100%"
+                                   cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in total_users %}
+                                    <tr>
+                                        <td>{{ user.get_full_name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.staff.role }}</td>
+                                        <td>{{ user.staff.department }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
-
-<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
-</body>
-
-</html>

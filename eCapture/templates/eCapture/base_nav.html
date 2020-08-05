@@ -1,7 +1,27 @@
-{% extends 'eCapture/dashboard.html' %}
+{% extends 'eCapture/base.html' %}
 {% load staticfiles %}
+{% block styles %}
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0,
+            0.8)), url({% static 'assets/img/senate.jpg' %});
+            background-size: cover;
+        }
+
+        .nav-link:hover {
+            background-color: #dee2e6 !important;
+            color: white !important;
+        }
+
+        img {
+            border-style: solid!important;
+            border-color: black!important;
+            border-width: thin!important;
+        }
+    </style>
+{% endblock %}
 {% block content %}
-    <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean"
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean"
          style="padding-top: 5px;padding-bottom: 5px;">
         <div class="container-fluid"><a class="navbar-brand" href="#"
                                         style="font-family: Montserrat, sans-serif;color: #1b8002;">eCapture</a>
@@ -41,9 +61,10 @@
         </div>
     </nav>
     <div>
-        <div class="row" style="height: 600px;">
+        <div class="row">
             <div class="col-lg-2 d-none d-lg-block offset-lg-0">
-                <div style="height: 100%;width: 100%;padding-top: 100px; background-color: white;color: black">
+                <div style="height: 100vh;width: 100%;padding-top: 150px;
+                background-color: white;color: black">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active"
