@@ -2,7 +2,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from eCapture.models import Attendance, Department, Staff, Role
+from eCapture.models import Attendance, Department, Staff, Role, Event, \
+    EventType
 
 
 def defaults(request):
@@ -55,7 +56,7 @@ def registration(request):
 
 
 def admin(request):
-    return render(request, 'eCapture/admin.html')
+    return render(request, 'eCapture/dashboard.html')
 
 
 def index(request):
@@ -70,3 +71,18 @@ def history(request):
 
 def view_user(request, username):
     return None
+
+
+def add_event(request):
+    if request.method == 'GET':
+        event_types = EventType.objects.all()
+        return render(request, 'eCapture/add-event.html',
+                      {'event_types': event_types})
+    else:
+        type_id = request.POST['type']
+        location = request.POST['location']
+        date = request.POST['date']
+        event = Event.objects.create(location=location, date=date,
+                                     type_id=type_id)
+        event.save()
+        return redirect('eCapture:admin')
