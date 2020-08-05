@@ -1,83 +1,95 @@
 {% extends 'eCapture/base_admin.html' %}
 {% block admin_main %}
     <div class="container-fluid">
-        <h1 class="mt-4">Dashboard</h1>
+        <h2 class="mt-4">Dashboard</h2>
         <div class="row">
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">8</div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>{{ total_users.count }}</h3>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link"
-                           href="#">View Details</a>
-                        <div class="small text-white"><i
-                                class="fas fa-angle-right"></i>
+                        <a class="small text-dark stretched-link"
+                           href="#">Total Number of Users</a>
+                        <div class="small">
+                            <i class="fas fa-angle-right"></i>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">34</div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>{{ total_events }}</h3>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link"
-                           href="#">View Details</a>
-                        <div class="small text-white"><i
-                                class="fas fa-angle-right"></i>
+                        <a class="small text-dark stretched-link"
+                           href="#">Total Number of Events</a>
+                        <div class="small">
+                            <i class="fas fa-angle-right"></i>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Success Card</div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>{{ last_event_attendance }}</h3>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link"
-                           href="#">View Details</a>
-                        <div class="small text-white"><i
-                                class="fas fa-angle-right"></i>
+                        <a class="small text-dark stretched-link"
+                           href="#">Number of Users that attended last
+                            event</a>
+                        <div class="small">
+                            <i class="fas fa-angle-right"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card mb-4">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered"
-                               id="dataTable" width="100%"
-                               cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            </tbody>
-                        </table>
+            {#            <div class="col-xl-3 col-md-6">#}
+            {#                <div class="card mb-4">#}
+            {#                    <div class="card-body">#}
+            {#                        <h3>8</h3>#}
+            {#                    </div>#}
+            {#                    <div class="card-footer d-flex align-items-center justify-content-between">#}
+            {#                        <a class="small text-dark stretched-link"#}
+            {#                           href="#">View Details</a>#}
+            {#                        <div class="small">#}
+            {#                            <i class="fas fa-angle-right"></i>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="col-xl-8 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>List of Users</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered"
+                                   id="dataTable" width="100%"
+                                   cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in total_users %}
+                                    <tr>
+                                        <td>{{ user.get_full_name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.staff.role }}</td>
+                                        <td>{{ user.staff.department }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

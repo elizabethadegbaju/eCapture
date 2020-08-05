@@ -1,6 +1,7 @@
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.utils import timezone
 
 from eCapture.models import Attendance, Department, Staff, Role, Event, \
     EventType
@@ -56,7 +57,14 @@ def registration(request):
 
 
 def admin(request):
-    return render(request, 'eCapture/dashboard.html')
+    total_users = User.objects.all()
+    total_events = Event.objects.count()
+    last_event = Event.objects.filter(
+        date__lte=timezone.now().date()).order_by('-date').first()
+    last_event_attendance = Attendance.objects.filter(event=last_event).count()
+    return render(request, 'eCapture/dashboard.html',
+                  {'total_users': total_users, 'total_events': total_events,
+                   'last_event_attendance': last_event_attendance})
 
 
 def index(request):
