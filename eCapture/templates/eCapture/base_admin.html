@@ -29,22 +29,22 @@
         {#            </div>#}
         {#        </form>#}
         <!-- Navbar-->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdown" href="#"
-                   role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false"><i
-                        class="fas fa-user fa-fw"></i></a>
-                <div class="dropdown-menu dropdown-menu-right"
-                     aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item"
-                       href="{% url 'logout' %}">Logout</a>
-                </div>
-            </li>
-        </ul>
+        {#        <ul class="navbar-nav ml-auto">#}
+        {#            <li class="nav-item dropdown">#}
+        {#                <a class="nav-link dropdown-toggle" id="userDropdown" href="#"#}
+        {#                   role="button" data-toggle="dropdown"#}
+        {#                   aria-haspopup="true" aria-expanded="false"><i#}
+        {#                        class="fas fa-user fa-fw"></i></a>#}
+        {#                <div class="dropdown-menu dropdown-menu-right"#}
+        {#                     aria-labelledby="userDropdown">#}
+        {#                    <a class="dropdown-item" href="#">Settings</a>#}
+        {#                    <a class="dropdown-item" href="#">Activity Log</a>#}
+        {#                    <div class="dropdown-divider"></div>#}
+        {#                    <a class="dropdown-item"#}
+        {#                       href="{% url 'logout' %}">Logout</a>#}
+        {#                </div>#}
+        {#            </li>#}
+        {#        </ul>#}
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -105,6 +105,12 @@
                                 </a>
                             </nav>
                         </div>
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <div class="sb-nav-link-icon"><i
+                                    class="fas fa-sign-out"></i></div>
+                            Logout
+                        </a>
+
                     </div>
                 </div>
             </nav>
@@ -185,5 +191,8 @@
     <script src="{% static 'assets/demo/datatables-demo.js' %}"></script>
     <script src="{% static 'assets/chart.js/Chart.min.js' %}"></script>
     <script src="{% static 'assets/js/bs-charts.js' %}"></script>
+    {% block scripts %}
+
+    {% endblock %}
     </body>
 {% endblock %}

@@ -5,14 +5,14 @@
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card mb-4">
-                    <div class="card-body">
-                        <h3>{{ total_users.count }}</h3>
+                    <div class="card-body" style="">
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-dark stretched-link"
-                           href="#">Total Number of Users</a>
+                        <div >
+                            <h3>{{ total_users.count }}</h3>
+                            <p class="small text-dark">Total Number of Users</p>
+                        </div>
                         <div class="small">
-                            <i class="fas fa-angle-right"></i>
                         </div>
                     </div>
                 </div>
@@ -20,13 +20,15 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h3>{{ total_events }}</h3>
+
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-dark stretched-link"
-                           href="#">Total Number of Events</a>
+                        <div>
+                            <h3>{{ total_events }}</h3>
+                            <p class="small text-dark">Total Number of Events</p>
+                        </div>
+
                         <div class="small">
-                            <i class="fas fa-angle-right"></i>
                         </div>
                     </div>
                 </div>
@@ -66,8 +68,8 @@
                         <h4>List of Users</h4>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered"
+                        <div class="table-responsive" style="font-size: 10px">
+                            <table class="table table-hover"
                                    id="dataTable" width="100%"
                                    cellspacing="0">
                                 <thead>
@@ -81,7 +83,10 @@
                                 <tbody>
                                 {% for user in total_users %}
                                     <tr>
-                                        <td>{{ user.get_full_name }}</td>
+                                        <td>
+                                            <img class="rounded-circle mr-2" width="30" height="30"
+                                                 src="{{ user.staff.image.url }}">
+                                            {{ user.get_full_name }}</td>
                                         <td>{{ user.email }}</td>
                                         <td>{{ user.staff.role }}</td>
                                         <td>{{ user.staff.department }}</td>
