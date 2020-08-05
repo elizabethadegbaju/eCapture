@@ -14,7 +14,7 @@
                     <hr>
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Name</label>
-                        <input class="form-control"
+                        <input class="form-control form-control-sm text-input respond"
                                required="" type="text" name="name"
                                value="{{ user.get_full_name }}"
                                style="height: 35px;">
@@ -22,7 +22,7 @@
                     <div class="form-group"
                          style="margin-bottom: 10px;"><label
                             style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Employee
-                        ID</label><input class="form-control" type="text"
+                        ID</label><input class="form-control form-control-sm text-input respond" type="text"
                                          autocomplete="off" required=""
                                          name="username" disabled=""
                                          value="{{ user.username }}"
@@ -31,14 +31,14 @@
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label
                                 style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Department</label><input
-                            class="form-control" type="text"
+                            class="form-control form-control-sm text-input respond" type="text"
                             autocomplete="off" required="" name="department"
                             value="{{ user.staff.department }}"
                             disabled="" style="height: 35px;">
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label style="font-size: 15px;font-family: Montserrat, sans-serif;margin-bottom: 3px;">Password</label>
-                        <input class="form-control" type="password"
+                        <input class="form-control form-control-sm text-input respond" type="password"
                                autocomplete="off" required="" name="password"
                                style="height: 35px;">
                         <div class="d-flex justify-content-center"
