@@ -1,4 +1,5 @@
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.utils import timezone
@@ -7,12 +8,14 @@ from eCapture.models import Attendance, Department, Staff, Role, Event, \
     EventType
 
 
+@login_required
 def defaults(request):
     defaults = Attendance.objects.filter(user=request.user, present=False,
                                          excused=False)
     return render(request, 'eCapture/defaults.html', {'defaults': defaults})
 
 
+@login_required
 def profile_settings(request):
     if request.method == 'GET':
         return render(request, 'eCapture/profile_settings.html')
@@ -28,6 +31,7 @@ def profile_settings(request):
         return redirect('eCapture:profile')
 
 
+@login_required
 def registration(request):
     if request.method == 'GET':
         departments = Department.objects.all()
@@ -56,6 +60,7 @@ def registration(request):
         return redirect('eCapture:registration')
 
 
+@login_required
 def admin(request):
     total_users = User.objects.all()
     total_events = Event.objects.count()
@@ -71,16 +76,19 @@ def index(request):
     return redirect('login')
 
 
+@login_required
 def history(request):
     history = Attendance.objects.filter(user=request.user)
     return render(request, 'eCapture/status_log.html',
                   {'history': history})
 
 
+@login_required
 def view_user(request, username):
     return None
 
 
+@login_required
 def add_event(request):
     if request.method == 'GET':
         event_types = EventType.objects.all()
