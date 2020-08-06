@@ -94,8 +94,11 @@
                                    id="image"
                                    name="image"
                                    accept="image/*" onchange="readURL(this);"/>
-                            <img id="blah" src="{% static 'assets/img/dummy-profile-pic.png' %}" alt="your image"
-                                 style="height: 100px!important;width: 100px!important; margin-top: 10px"/>
+                            <img id="blah"
+                                 src="{% static 'assets/img/dummy-profile-pic.png' %}"
+                                 alt="your image"
+                                 style="height: 150px!important;width:
+                                 150px!important; margin-top: 10px"/>
                         </div>
                         <div class="form-group">
                             <br/>
@@ -127,8 +130,6 @@
                     reader.onload = function (e) {
                         $('#blah')
                             .attr('src', e.target.result)
-                            .width(150)
-                            .height(200);
                     };
 
                     reader.readAsDataURL(input.files[0]);
