@@ -1,8 +1,7 @@
-from datetime import datetime
-
-from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 def user_image_path(instance, filename):
@@ -35,7 +34,22 @@ class Attendance(models.Model):
     excused = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.event)
+        return str(self.user) + " | " + str(self.event)
+
+
+@receiver(post_save, sender=Attendance)
+def notify_defaults(sender, instance, **kwargs):
+    if (instance.present == False) & (instance.excused == False):
+        user = instance.user
+        defaults = user.attendance_set.filter(present=False,
+                                              excused=False).count()
+        if defaults >= 3:
+            user.email_user(
+                "You have missed attendance {0} times!".format(defaults),
+                "This is to inform you that you have been "
+                "marked absent from university gatherings {0} "
+                "times.".format(defaults), "admin@covenantuniversity.edu.ng")
+
 
 class Event(models.Model):
     type = models.ForeignKey('EventType', on_delete=models.CASCADE)
