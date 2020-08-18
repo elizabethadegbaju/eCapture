@@ -4,11 +4,12 @@
         <h2 class="mt-4">Dashboard</h2>
         <div class="row">
             <div class="col-xl-3 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body" style="">
+                <div class="card mb-4" style="border-radius: 20px; width: 280px;">
+                    <div class="card-body"
+                         style="background-image: linear-gradient(90deg, #FEBABD 0%, rgba(37, 78, 123, 0.67) 100%); height: 70px;)">
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <div >
+                        <div>
                             <h3>{{ total_users.count }}</h3>
                             <p class="small text-dark">Total Number of Users</p>
                         </div>
@@ -18,8 +19,9 @@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
+                <div class="card mb-4" style="border-radius: 20px; width: 280px">
+                    <div class="card-body"
+                         style="background-image: linear-gradient(90deg, #FCE9B5 0%, #F7C3B0 100%); height: 70px;)">
 
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -34,41 +36,43 @@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3>{{ last_event_attendance }}</h3>
+                <div class="card mb-4" style="width: 280px; border-radius: 20px;!important;">
+                    <div class="card-body"
+                         style="background-image: linear-gradient(90deg, #A7F5F0 0%, #B4DCF4 100%); height: 70px;)">
+
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-dark stretched-link"
-                           href="#">Number of Users that attended last
-                            event</a>
+                        <div>
+                            <h3>{{ last_event_attendance }}</h3>
+                            <p class="small text-dark">Number of Users that attended last event</p>
+                        </div>
+
                         <div class="small">
-                            <i class="fas fa-angle-right"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            {#            <div class="col-xl-3 col-md-6">#}
-            {#                <div class="card mb-4">#}
-            {#                    <div class="card-body">#}
-            {#                        <h3>8</h3>#}
-            {#                    </div>#}
-            {#                    <div class="card-footer d-flex align-items-center justify-content-between">#}
-            {#                        <a class="small text-dark stretched-link"#}
-            {#                           href="#">View Details</a>#}
-            {#                        <div class="small">#}
-            {#                            <i class="fas fa-angle-right"></i>#}
+            {#                        <div class="col-xl-3 col-md-6">#}
+            {#                            <div class="card mb-4">#}
+            {#                                <div class="card-body">#}
+            {#                                    <h3>8</h3>#}
+            {#                                </div>#}
+            {#                                <div class="card-footer d-flex align-items-center justify-content-between">#}
+            {#                                    <a class="small text-dark stretched-link"#}
+            {#                                       href="#">View Details</a>#}
+            {#                                    <div class="small">#}
+            {#                                        <i class="fas fa-angle-right"></i>#}
+            {#                                    </div>#}
+            {#                                </div>#}
+            {#                            </div>#}
             {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
             <div class="col-xl-8 col-md-6">
                 <div class="card mb-4">
                     <div class="card-header">
                         <h4>List of Users</h4>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive" style="font-size: 10px">
+                        <div class="table-responsive" style="font-size: 11px">
                             <table class="table table-hover"
                                    id="dataTable" width="100%"
                                    cellspacing="0">
@@ -108,7 +112,7 @@
                         <div class="chart-area mb-4" style="width: 100%;">
                             <canvas height="250px"
                                     data-bs-chart='{"type":"pie",
-                            "data":{"labels":["Past Events","Upcoming Events"],"datasets":[{"label":"","backgroundColor":["#f4476b","#894f62"],"borderColor":["#ffffff","#ffffff"],"data":["{{ past_events }}","{{ upcoming_events }}"]}]},"options":{"maintainAspectRatio":false,"legend":{"display":true},"title":{}}}'></canvas>
+                            "data":{"labels":["Past Events","Upcoming Events"],"datasets":[{"label":"","backgroundColor":["#CFD8DC","#616161"],"borderColor":["#ffffff","#ffffff"],"data":["{{ past_events }}","{{ upcoming_events }}"]}]},"options":{"maintainAspectRatio":false,"legend":{"display":true},"title":{}}}'></canvas>
                         </div>
                     </div>
                 </div>
