@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+from decouple import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,9 +33,9 @@ LOGOUT_REDIRECT_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = 'ehannah940@gmail.com'
-EMAIL_HOST_PASSWORD = 'ha123nnah'
+EMAIL_HOST_PASSWORD = config('EMAIL_PASS')
 EMAIL_USE_SSL = True
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -66,7 +68,7 @@ ROOT_URLCONF = 'finalyearproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "eCapture/templates"), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
