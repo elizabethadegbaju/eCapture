@@ -39,8 +39,18 @@ class Attendance(models.Model):
 
 @receiver(post_save, sender=Attendance)
 def notify_defaults(sender, instance, **kwargs):
+    user = instance.user
+    status = "Absent from"
+    if (instance.present == False) & (instance.excused == True):
+        status = "Excused from"
+    elif(instance.present==True):
+        status = "Present at"
+    user.email_user(
+        "Your attendance status for {0}".format(instance.event),
+        "This is to inform you that you were {0} the following university "
+        "gathering: \n{1}".format(status,instance.event),
+        "admin@covenantuniversity.edu.ng")
     if (instance.present == False) & (instance.excused == False):
-        user = instance.user
         defaults = user.attendance_set.filter(present=False,
                                               excused=False).count()
         if defaults >= 3:
