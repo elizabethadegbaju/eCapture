@@ -16,12 +16,12 @@
   border-color: #1b8002;
 }
 
-.nav-fixed{
-  height: 100vh;
-  z-index: 1;
-  overflow-x: hidden;
-  position: fixed;
-}
+/*.nav-fixed{*/
+/*  height: 100vh;*/
+/*  z-index: 1;*/
+/*  overflow-x: hidden;*/
+/*  position: fixed;*/
+/*}*/
 /*.text-input {*/
 /*  background: white;*/
 /*  border: none;*/
