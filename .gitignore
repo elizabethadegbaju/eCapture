@@ -1,5 +1,5 @@
 /.idea/
-/lmsenv/
+/venv/
 /venv/
 *.pyc
 /.env
