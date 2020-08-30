@@ -15,6 +15,7 @@ class Staff(models.Model):
     role = models.ForeignKey('Role', on_delete=models.DO_NOTHING, default=1)
     dob = models.DateField()
     image = models.ImageField(upload_to=user_image_path)
+    finger_print = models.BinaryField(default=b"")
 
     def __str__(self):
         return str(self.user)
@@ -41,14 +42,14 @@ class Attendance(models.Model):
 def notify_defaults(sender, instance, **kwargs):
     user = instance.user
     status = "Absent from"
-    if (instance.present == False) & (instance.excused == True):
+    if (instance.present is False) & (instance.excused is True):
         status = "Excused from"
-    elif(instance.present==True):
+    elif instance.present:
         status = "Present at"
     user.email_user(
         "Your attendance status for {0}".format(instance.event),
         "This is to inform you that you were {0} the following university "
-        "gathering: \n{1}".format(status,instance.event),
+        "gathering: \n{1}".format(status, instance.event),
         "admin@covenantuniversity.edu.ng")
     if (instance.present == False) & (instance.excused == False):
         defaults = user.attendance_set.filter(present=False,
