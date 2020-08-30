@@ -15,7 +15,7 @@ class Staff(models.Model):
     role = models.ForeignKey('Role', on_delete=models.DO_NOTHING, default=1)
     dob = models.DateField()
     image = models.ImageField(upload_to=user_image_path)
-    finger_print = models.BinaryField(default=b"")
+    finger_print = models.BinaryField(default=b"", null=True)
 
     def __str__(self):
         return str(self.user)
