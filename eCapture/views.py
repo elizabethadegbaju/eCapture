@@ -1,3 +1,5 @@
+import subprocess
+
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -57,7 +59,10 @@ def registration(request):
                                          department_id=department_id,
                                          image=image)
         new_staff.save()
-        return redirect('eCapture:registration')
+        program = '' #path to the exe file goes here
+        arguments = '' #arguments go here
+        subprocess.call([program, arguments])
+        return render(request, 'registration/capture.html')
 
 
 @login_required
