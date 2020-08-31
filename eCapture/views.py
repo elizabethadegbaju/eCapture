@@ -59,8 +59,9 @@ def registration(request):
                                          department_id=department_id,
                                          image=image)
         new_staff.save()
-        program = '' #path to the exe file goes here
-        arguments = '' #arguments go here
+        program = 'C:\Users\MVT1\Desktop\firstwebsite\Fingerprint-Authentication\Fingerprint ' \
+                  'Authentication\bin\Debug\Fingerprint Authentication.exe'
+        arguments = 'functionToExecute enroll ID 373828'
         subprocess.call([program, arguments])
         return render(request, 'registration/capture.html')
 
