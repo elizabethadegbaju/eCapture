@@ -58,13 +58,12 @@ def registration(request):
         new_staff = Staff.objects.create(user=new_user, dob=dob, role_id=role,
                                          department_id=department_id,
                                          image=image)
-        new_staff.save()
-        program = 'C:\Users\MVT1\Desktop\firstwebsite\Fingerprint-Authentication\Fingerprint ' \
-                  'Authentication\bin\Debug\Fingerprint Authentication.exe'
-        arguments = 'functionToExecute enroll ID 373828'
-        subprocess.call([program, arguments])
-        return render(request, 'registration/capture.html')
 
+        # new_staff.save()
+        # program = ''
+        # arguments = 'functionToExecute enroll ID 373828'
+        # subprocess.call([program, arguments])
+        # return render(request, 'registration/capture.html')
 
 @login_required
 def admin(request):
