@@ -58,12 +58,12 @@ def registration(request):
         new_staff = Staff.objects.create(user=new_user, dob=dob, role_id=role,
                                          department_id=department_id,
                                          image=image)
-        new_staff.save()
-        program = '' #path to the exe file goes here
-        arguments = '' #arguments go here
-        subprocess.call([program, arguments])
-        return render(request, 'registration/capture.html')
 
+        # new_staff.save()
+        # program = ''
+        # arguments = 'functionToExecute enroll ID 373828'
+        # subprocess.call([program, arguments])
+        # return render(request, 'registration/capture.html')
 
 @login_required
 def admin(request):

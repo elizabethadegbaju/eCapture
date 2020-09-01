@@ -15,7 +15,6 @@ class Staff(models.Model):
     role = models.ForeignKey('Role', on_delete=models.DO_NOTHING, default=1)
     dob = models.DateField()
     image = models.ImageField(upload_to=user_image_path)
-    finger_print = models.BinaryField(default=b"", null=True)
 
     def __str__(self):
         return str(self.user)
@@ -26,6 +25,11 @@ class Role(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Capture(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    finger_print = models.BinaryField(default=b"", null=True)
 
 
 class Attendance(models.Model):
