@@ -15,6 +15,7 @@ urlpatterns = [
     path('users/<str:username>/', views.view_user, name='view_user'),
     path('dashboard/', views.admin, name='admin'),
     path('dashboard/find/', views.find_user, name='find_user'),
+    path('event/attendance/',views.start_attendance, name='start_attendance'),
     path('events/add/', views.add_event, name='add_event'),
     path('event-types/add/', views.add_event_type, name='add_event_type')
 ]

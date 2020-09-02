@@ -35,11 +35,13 @@ def profile_settings(request):
 
 @login_required
 def registration(request):
+    events = Event.objects.all()
     if request.method == 'GET':
         departments = Department.objects.all()
         roles = Role.objects.all()
         return render(request, 'registration/registration.html',
-                      {'departments': departments, 'roles': roles})
+                      {'departments': departments, 'roles': roles,
+                       'events': events})
     elif request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -62,15 +64,15 @@ def registration(request):
         new_staff.save()
         program = 'C:/Users/MVT1/Desktop/firstwebsite/Fingerprint-Authentication/Fingerprint ' \
                   'Authentication/bin/Release/Fingerprint Authentication.exe '
-        subprocess.call([program, 'functionToExecute', 'enroll', 'userID', str(new_staff.user.id)])
-        return render(request, 'registration/capture.html')
-
+        subprocess.call([program, 'functionToExecute', 'enroll', 'userID',
+                         str(new_staff.user.id)])
+        return render(request, 'registration/capture.html', {'events', events})
 
 
 @login_required
 def admin(request):
     total_users = User.objects.all()
-    total_events = Event.objects.count()
+    events = Event.objects.all()
     today = timezone.now().date()
     last_event = Event.objects.filter(
         date__lte=today).order_by('-date').first()
@@ -78,7 +80,7 @@ def admin(request):
     past_events = Event.objects.filter(date__lte=today).count()
     upcoming_events = Event.objects.filter(date__gt=today).count()
     return render(request, 'eCapture/dashboard.html',
-                  {'total_users': total_users, 'total_events': total_events,
+                  {'total_users': total_users, 'events': events,
                    'last_event_attendance': last_event_attendance,
                    'past_events': past_events,
                    'upcoming_events': upcoming_events})
@@ -97,18 +99,20 @@ def history(request):
 
 @login_required
 def view_user(request, username):
+    events = Event.objects.all()
     history = Attendance.objects.filter(user__username=username)
     user = User.objects.get(username=username)
     return render(request, 'eCapture/status_log.html',
-                  {'history': history, 'user': user})
+                  {'history': history, 'user': user, 'events': events})
 
 
 @login_required
 def add_event(request):
+    events = Event.objects.all()
     if request.method == 'GET':
         event_types = EventType.objects.all()
         return render(request, 'eCapture/add-event.html',
-                      {'event_types': event_types})
+                      {'event_types': event_types, 'events':events})
     else:
         type_id = request.POST['type']
         location = request.POST['location']
@@ -121,8 +125,10 @@ def add_event(request):
 
 @login_required
 def add_event_type(request):
+    events = Event.objects.all()
     if request.method == 'GET':
-        return render(request, 'eCapture/add-event-type.html')
+        return render(request, 'eCapture/add-event-type.html',
+                      {'events':events})
     else:
         name = request.POST['name']
         event_type = EventType.objects.create(name=name)
@@ -134,3 +140,13 @@ def add_event_type(request):
 def find_user(request):
     username = request.POST["username"]
     return redirect('eCapture:view_user', username)
+
+
+def start_attendance(request):
+    pk = request.POST['event_id']
+    event = Event.objects.get(id=pk)
+    program = 'C:/Users/MVT1/Desktop/firstwebsite/Fingerprint-Authentication/Fingerprint ' \
+              'Authentication/bin/Release/Fingerprint Authentication.exe '
+    subprocess.call([program, 'functionToExecute', 'verify', 'eventID',
+                     str(event.id)])
+    return redirect('eCapture:admin')

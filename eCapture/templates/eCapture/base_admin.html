@@ -74,9 +74,11 @@
                              data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link"
-                                   href="{% url 'eCapture:add_event' %}">Add Upcoming Event</a>
+                                   href="{% url 'eCapture:add_event' %}">Add
+                                    Upcoming Event</a>
                                 <a class="nav-link"
-                                   href="{% url 'eCapture:add_event_type' %}">Add New
+                                   href="{% url 'eCapture:add_event_type' %}">Add
+                                    New
                                     Event Type</a>
                             </nav>
                         </div>
@@ -99,12 +101,15 @@
                                    href="{% url 'eCapture:registration' %}">
                                     Register New User
                                 </a>
-                                <a class="nav-link" data-toggle="modal"
-                                   href="#" data-target="#findUser">
-                                    View a User
-                                </a>
                             </nav>
                         </div>
+                        <a class="nav-link" data-toggle="modal"
+                           href="#" data-target="#startAttendance">
+                            <div class="sb-nav-link-icon"><i
+                                    class="fas fa-check-square"></i>
+                            </div>
+                            Capture Attendance
+                        </a>
                         <a class="nav-link" href="{% url 'logout' %}">
                             <div class="sb-nav-link-icon"><i
                                     class="fas fa-unlock-alt"></i></div>
@@ -178,6 +183,50 @@
                 </div>
             </div>
         </div>
+        <div id="startAttendance" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel1"
+             aria-hidden="true" class="modal fade text-left">
+            <div role="document" class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="exampleModalLabel1"
+                            class="modal-title">Start Attendance Capture</h5>
+                        <button type="button"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                class="close"><span
+                                aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <form action="{% url 'eCapture:start_attendance' %}"
+                          method="post">
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Select an Event:</label>
+                                <select name="event_id" class="form-control">
+                                    {% for event in events %}
+                                        <option value="{{ event.id }}">{{ event }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                    data-dismiss="modal"
+                                    class="btn btn-secondary">
+                                Close
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Start Attendance Capture
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
             crossorigin="anonymous"></script>
